@@ -1,0 +1,2360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CaterRing | Catering Management System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <!-- =====================================================
+       LOGIN PAGE
+  ====================================================== -->
+
+  <section id="loginPage" class="login-page">
+
+    <div class="login-shell">
+
+      <div class="login-brand-panel">
+
+        <div class="brand">
+          <div class="brand-icon">🍽️</div>
+
+          <div>
+            <b>CaterRing</b>
+            <small>Catering Management System</small>
+          </div>
+        </div>
+
+        <div class="hero-copy">
+
+          <span class="eyebrow">
+            PLAN • SERVE • CELEBRATE
+          </span>
+
+          <h1>
+            Make every event
+            <span>worth remembering.</span>
+          </h1>
+
+          <p>
+            Manage bookings, customers, menus, venues and payments
+            in one simple catering system.
+          </p>
+
+        </div>
+
+        <div class="event-cards">
+
+          <div class="event-card big">
+            <span>💍</span>
+
+            <div>
+              <b>Wedding Celebration</b>
+              <small>Booking confirmed ✓</small>
+            </div>
+          </div>
+
+          <div class="event-card">
+
+            <span>🍴</span>
+
+            <div>
+              <b>Premium Menu</b>
+              <small>Chef's selection</small>
+            </div>
+
+          </div>
+
+          <div class="event-card">
+
+            <span>👥</span>
+
+            <div>
+              <b>150 Guests</b>
+              <small>Grand Hall</small>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="login-panel">
+
+        <div class="mobile-brand brand">
+
+          <div class="brand-icon">🍽️</div>
+
+          <div>
+            <b>CaterRing</b>
+            <small>Catering Management System</small>
+          </div>
+
+        </div>
+
+
+        <div class="login-card">
+
+          <p class="eyebrow">
+            WELCOME BACK
+          </p>
+
+          <h2>
+            Log in to CaterRing
+          </h2>
+
+          <p class="muted">
+            Choose your account type and continue.
+          </p>
+
+
+          <!-- ROLE SELECTOR -->
+
+          <div class="role-switch">
+
+            <button
+              type="button"
+              id="adminRoleBtn"
+              class="role-btn active">
+
+              🛡️
+
+              <span>
+                <b>Admin</b>
+                <small>Manage system</small>
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              id="customerRoleBtn"
+              class="role-btn">
+
+              👤
+
+              <span>
+                <b>Customer</b>
+                <small>Book your event</small>
+              </span>
+
+            </button>
+
+          </div>
+
+
+          <!-- LOGIN FORM -->
+
+          <form id="loginForm" novalidate>
+
+            <div class="field">
+
+              <label for="loginEmail">
+                Email or Username
+                <i>*</i>
+              </label>
+
+              <input
+                id="loginEmail"
+                type="text"
+                autocomplete="username"
+                placeholder="Email or username"
+                required>
+
+              <small
+                class="error"
+                id="loginEmailError">
+              </small>
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="loginPassword">
+                Password
+                <i>*</i>
+              </label>
+
+              <div class="password-box">
+
+                <input
+                  id="loginPassword"
+                  type="password"
+                  minlength="8"
+                  pattern="[A-Za-z0-9]+"
+                  autocomplete="current-password"
+                  placeholder="Minimum 8 characters"
+                  required>
+
+                <button
+                  type="button"
+                  class="eye"
+                  data-target="loginPassword">
+                  👁
+                </button>
+
+              </div>
+
+              <small class="hint">
+                Minimum 8 characters; letters and numbers only.
+              </small>
+
+              <small
+                class="error"
+                id="loginPasswordError">
+              </small>
+
+            </div>
+
+
+            <div class="login-row">
+
+              <label>
+                <input
+                  id="rememberMe"
+                  type="checkbox">
+
+                Remember me
+              </label>
+
+
+              <button
+                type="button"
+                class="link-btn"
+                id="forgotPassword">
+
+                Forgot password?
+
+              </button>
+
+            </div>
+
+
+            <button
+              class="primary-btn"
+              type="submit">
+
+              Log In
+
+            </button>
+
+          </form>
+
+
+          <div class="or">
+            <span>or</span>
+          </div>
+
+
+          <!-- CUSTOMER REGISTRATION ONLY -->
+
+          <button
+            type="button"
+            class="secondary-btn"
+            id="createAccountButton">
+
+            ＋ Create Customer Account
+
+          </button>
+
+
+          <button
+            type="button"
+            class="text-btn"
+            id="anotherAccountButton">
+
+            Use another account
+
+          </button>
+
+
+          <p class="demo-note">
+
+            Demo admin:
+            <b>admin@caterring.com</b>
+            /
+            <b>Admin123</b>
+
+          </p>
+
+        </div>
+
+
+        <footer>
+          © 2026 CaterRing Catering Management System
+        </footer>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       CUSTOMER REGISTRATION MODAL
+  ====================================================== -->
+
+  <div
+    id="customerRegisterModal"
+    class="modal hidden"
+    aria-hidden="true">
+
+    <div
+      class="modal-backdrop"
+      data-close="customerRegisterModal">
+    </div>
+
+
+    <div class="modal-card wide">
+
+      <button
+        class="modal-close"
+        data-close="customerRegisterModal">
+
+        ×
+
+      </button>
+
+
+      <p class="eyebrow">
+        CUSTOMER REGISTRATION
+      </p>
+
+      <h2>
+        Create your CaterRing account
+      </h2>
+
+      <p class="muted">
+        All required fields must be completed correctly.
+      </p>
+
+
+      <form
+        id="customerRegisterForm"
+        novalidate>
+
+        <div class="form-grid two">
+
+
+          <!-- FIRST NAME -->
+
+          <div class="field">
+
+            <label>
+              First Name
+              <i>*</i>
+            </label>
+
+            <input
+              id="regFirstName"
+              type="text"
+              required
+              pattern="[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*"
+              maxlength="60"
+              placeholder="Juan">
+
+            <small class="error"></small>
+
+          </div>
+
+
+          <!-- LAST NAME -->
+
+          <div class="field">
+
+            <label>
+              Last Name
+              <i>*</i>
+            </label>
+
+            <input
+              id="regLastName"
+              type="text"
+              required
+              pattern="[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*"
+              maxlength="60"
+              placeholder="Dela Cruz">
+
+            <small class="error"></small>
+
+          </div>
+
+
+          <!-- MIDDLE NAME -->
+
+          <div class="field">
+
+            <label>
+              Middle Name / Initial
+              <span>(optional)</span>
+            </label>
+
+            <input
+              id="regMiddleName"
+              type="text"
+              pattern="[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*"
+              maxlength="60"
+              placeholder="S or Santos">
+
+            <small class="error"></small>
+
+          </div>
+
+
+          <!-- GENDER -->
+
+          <div class="field">
+
+            <label>
+              Gender
+              <i>*</i>
+            </label>
+
+            <select
+              id="regGender"
+              required>
+
+              <option value="">
+                Select gender
+              </option>
+
+              <option>
+                Male
+              </option>
+
+              <option>
+                Female
+              </option>
+
+              <option>
+                Prefer not to say
+              </option>
+
+            </select>
+
+            <small class="error"></small>
+
+          </div>
+
+
+          <!-- BIRTH DATE -->
+
+          <div class="field">
+
+            <label>
+              Birth Date
+              <i>*</i>
+            </label>
+
+            <input
+              id="regBirthDate"
+              type="date"
+              required>
+
+            <small class="error"></small>
+
+          </div>
+
+
+          <!-- PHONE -->
+
+          <div class="field">
+
+            <label>
+              Phone Number
+              <i>*</i>
+            </label>
+
+            <input
+              id="regPhone"
+              type="tel"
+              required
+              pattern="09[0-9]{9}"
+              maxlength="11"
+              inputmode="numeric"
+              placeholder="09XXXXXXXXX">
+
+            <small class="hint">
+              Philippine mobile format: 09XXXXXXXXX
+            </small>
+
+            <small class="error"></small>
+
+          </div>
+
+
+          <!-- EMAIL -->
+
+          <div class="field">
+
+            <label>
+              Email
+              <i>*</i>
+            </label>
+
+            <input
+              id="regEmail"
+              type="email"
+              required
+              maxlength="254"
+              autocomplete="email"
+              placeholder="example@gmail.com">
+
+            <small class="error"></small>
+
+          </div>
+
+
+          <!-- USERNAME -->
+
+          <div class="field">
+
+            <label>
+              Username
+              <i>*</i>
+            </label>
+
+            <input
+              id="regUsername"
+              type="text"
+              required
+              pattern="[A-Za-z0-9]+"
+              autocomplete="username"
+              placeholder="juan123">
+
+            <small class="hint">
+              Letters and numbers only.
+            </small>
+
+            <small class="error"></small>
+
+          </div>
+
+
+          <!-- PASSWORD -->
+
+          <div class="field">
+
+            <label>
+              Password
+              <i>*</i>
+            </label>
+
+            <div class="password-box">
+
+              <input
+                id="regPassword"
+                type="password"
+                required
+                minlength="8"
+                pattern="[A-Za-z0-9]+"
+                autocomplete="new-password"
+                placeholder="At least 8 letters/numbers">
+
+              <button
+                type="button"
+                class="eye"
+                data-target="regPassword">
+
+                👁
+
+              </button>
+
+            </div>
+
+            <small class="hint">
+              8 or more characters. No maximum.
+              Letters and numbers only.
+            </small>
+
+            <small class="error"></small>
+
+          </div>
+
+
+          <!-- CONFIRM PASSWORD -->
+
+          <div class="field">
+
+            <label>
+              Confirm Password
+              <i>*</i>
+            </label>
+
+            <input
+              id="regConfirmPassword"
+              type="password"
+              required
+              minlength="8"
+              pattern="[A-Za-z0-9]+"
+              autocomplete="new-password"
+              placeholder="Re-enter password">
+
+            <small class="error"></small>
+
+          </div>
+
+        </div>
+
+
+        <label class="check">
+
+          <input
+            id="regTerms"
+            type="checkbox"
+            required>
+
+          I confirm that the information I entered is correct.
+
+        </label>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-btn"
+            data-close="customerRegisterModal">
+
+            Cancel
+
+          </button>
+
+
+          <button
+            class="primary-btn"
+            type="submit">
+
+            Create Account
+
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       ADMIN PAGE
+  ====================================================== -->
+
+  <section
+    id="adminPage"
+    class="app hidden">
+
+    <aside class="sidebar">
+
+      <div class="side-brand">
+
+        <div>🍽️</div>
+
+        <span>
+          CaterRing
+          <small>Administrator</small>
+        </span>
+
+      </div>
+
+
+      <nav id="adminNav">
+
+        <a
+          class="active"
+          data-section="adminDashboard">
+
+          🏠 Dashboard
+
+        </a>
+
+        <a data-section="adminBookings">
+          📋 Bookings
+        </a>
+
+        <a data-section="adminPayments">
+          💳 Payments
+        </a>
+
+        <a data-section="adminInventory">
+          📦 Inventory
+        </a>
+
+        <a data-section="adminCustomers">
+          👥 Customers
+        </a>
+
+        <a data-section="adminReports">
+          📊 Reports
+        </a>
+
+        <a data-section="adminAdmins">
+          🛡️ Admin Accounts
+        </a>
+
+      </nav>
+
+
+      <div class="side-bottom">
+
+        <a id="settingsButton">
+          ⚙️ Settings
+        </a>
+
+        <a id="adminLogout">
+          ↪ Log out
+        </a>
+
+      </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+      <header class="topbar">
+
+        <div>
+
+          <p class="eyebrow">
+            ADMINISTRATOR
+          </p>
+
+          <h1 id="adminSectionTitle">
+            Dashboard
+          </h1>
+
+        </div>
+
+
+        <div class="user-chip">
+
+          <span>🛡️</span>
+
+          <div>
+
+            <b id="adminUserName">
+              Administrator
+            </b>
+
+            <small id="adminUserEmail">
+              admin@caterring.com
+            </small>
+
+          </div>
+
+        </div>
+
+      </header>
+
+
+      <!-- ADMIN DASHBOARD -->
+
+      <section
+        id="adminDashboard"
+        class="page-section">
+
+        <div class="stat-grid">
+
+          <div class="stat">
+
+            <span>📋</span>
+
+            <b id="statBookings">
+              0
+            </b>
+
+            <small>
+              Total Bookings
+            </small>
+
+          </div>
+
+
+          <div class="stat">
+
+            <span>💳</span>
+
+            <b id="statPayments">
+              ₱0
+            </b>
+
+            <small>
+              Total Payments
+            </small>
+
+          </div>
+
+
+          <div class="stat">
+
+            <span>👥</span>
+
+            <b id="statCustomers">
+              0
+            </b>
+
+            <small>
+              Customers
+            </small>
+
+          </div>
+
+
+          <div class="stat">
+
+            <span>⏳</span>
+
+            <b id="statPending">
+              0
+            </b>
+
+            <small>
+              Pending
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <div>
+
+              <h2>
+                Recent Bookings
+              </h2>
+
+              <p>
+                Latest catering requests
+              </p>
+
+            </div>
+
+
+            <button
+              class="secondary-btn small"
+              data-section-target="adminBookings">
+
+              View all
+
+            </button>
+
+          </div>
+
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>ID</th>
+                  <th>Customer</th>
+                  <th>Event</th>
+                  <th>Date</th>
+                  <th>Guests</th>
+                  <th>Status</th>
+                </tr>
+
+              </thead>
+
+              <tbody id="recentBookingsBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ADMIN BOOKINGS -->
+
+      <section
+        id="adminBookings"
+        class="page-section hidden">
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <div>
+
+              <h2>
+                Add Booking
+              </h2>
+
+              <p>
+                Create a booking for a customer.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <form
+            id="bookingForm"
+            novalidate>
+
+            <div class="form-grid three">
+
+
+              <div class="field">
+
+                <label>
+                  Customer Name
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="customerName"
+                  required
+                  pattern="[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*"
+                  maxlength="100">
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Email
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="customerEmail"
+                  type="email"
+                  required
+                  maxlength="254">
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Phone
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="customerPhone"
+                  type="tel"
+                  required
+                  pattern="09[0-9]{9}"
+                  maxlength="11">
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Event Date
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="eventDate"
+                  type="date"
+                  required>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Event Type
+                  <i>*</i>
+                </label>
+
+                <select
+                  id="eventType"
+                  required>
+
+                  <option value="">
+                    Select event
+                  </option>
+
+                  <option>Wedding</option>
+                  <option>Birthday</option>
+                  <option>Corporate Event</option>
+                  <option>Debut</option>
+                  <option>Anniversary</option>
+                  <option>Other</option>
+
+                </select>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Guest Count
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="guestCount"
+                  type="number"
+                  min="1"
+                  max="10000"
+                  required>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Menu
+                  <i>*</i>
+                </label>
+
+                <select
+                  id="menu"
+                  required>
+
+                  <option value="">
+                    Select menu
+                  </option>
+
+                  <option>
+                    Premium Package
+                  </option>
+
+                  <option>
+                    Package A
+                  </option>
+
+                  <option>
+                    Package B
+                  </option>
+
+                  <option>
+                    Package C
+                  </option>
+
+                </select>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Venue
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="venue"
+                  required
+                  maxlength="120">
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field full">
+
+                <label>
+                  Notes
+                </label>
+
+                <textarea
+                  id="bookingNotes"
+                  maxlength="500"
+                  rows="3"></textarea>
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="primary-btn"
+              type="submit">
+
+              ＋ Add Booking
+
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <h2>
+              All Bookings
+            </h2>
+
+          </div>
+
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>ID</th>
+                  <th>Customer</th>
+                  <th>Event</th>
+                  <th>Date</th>
+                  <th>Guests</th>
+                  <th>Status</th>
+                </tr>
+
+              </thead>
+
+              <tbody id="bookingsBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ADMIN PAYMENTS -->
+
+      <section
+        id="adminPayments"
+        class="page-section hidden">
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <div>
+
+              <h2>
+                Record Payment
+              </h2>
+
+              <p>
+                Track customer payments.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <form
+            id="paymentForm"
+            novalidate>
+
+            <div class="form-grid three">
+
+
+              <div class="field">
+
+                <label>
+                  Booking
+                  <i>*</i>
+                </label>
+
+                <select
+                  id="paymentBooking"
+                  required>
+                </select>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Payment Date
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="paymentDate"
+                  type="date"
+                  required>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Amount
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="amount"
+                  type="number"
+                  min="0.01"
+                  max="10000000"
+                  step="0.01"
+                  required>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Method
+                  <i>*</i>
+                </label>
+
+                <select
+                  id="paymentMethod"
+                  required>
+
+                  <option value="">
+                    Select method
+                  </option>
+
+                  <option>GCash</option>
+                  <option>Cash</option>
+                  <option>Bank Transfer</option>
+                  <option>Credit/Debit Card</option>
+
+                </select>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Status
+                  <i>*</i>
+                </label>
+
+                <select
+                  id="paymentStatus"
+                  required>
+
+                  <option value="">
+                    Select status
+                  </option>
+
+                  <option>Paid</option>
+                  <option>Partial</option>
+                  <option>Pending</option>
+
+                </select>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field full">
+
+                <label>
+                  Notes
+                </label>
+
+                <textarea
+                  id="paymentNotes"
+                  maxlength="500"
+                  rows="3"></textarea>
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="primary-btn"
+              type="submit">
+
+              ＋ Record Payment
+
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <h2>
+              Payment History
+            </h2>
+
+          </div>
+
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>ID</th>
+                  <th>Booking</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Method</th>
+                  <th>Status</th>
+                </tr>
+
+              </thead>
+
+              <tbody id="paymentsBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ADMIN INVENTORY -->
+
+      <section
+        id="adminInventory"
+        class="page-section hidden">
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <div>
+
+              <h2>
+                Inventory
+              </h2>
+
+              <p>
+                Sample inventory for the prototype.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>ID</th>
+                  <th>Item</th>
+                  <th>Category</th>
+                  <th>Quantity</th>
+                  <th>Unit</th>
+                  <th>Status</th>
+                </tr>
+
+              </thead>
+
+
+              <tbody>
+
+                <tr>
+
+                  <td>
+                    INV-001
+                  </td>
+
+                  <td>
+                    Plates
+                  </td>
+
+                  <td>
+                    Tableware
+                  </td>
+
+                  <td>
+                    500
+                  </td>
+
+                  <td>
+                    pcs
+                  </td>
+
+                  <td>
+                    <span class="status available">
+                      Available
+                    </span>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+
+                  <td>
+                    INV-002
+                  </td>
+
+                  <td>
+                    Equipment
+                  </td>
+
+                  <td>
+                    Equipment
+                  </td>
+
+                  <td>
+                    250
+                  </td>
+
+                  <td>
+                    pcs
+                  </td>
+
+                  <td>
+                    <span class="status available">
+                      Available
+                    </span>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+
+                  <td>
+                    INV-003
+                  </td>
+
+                  <td>
+                    Chairs
+                  </td>
+
+                  <td>
+                    Equipment
+                  </td>
+
+                  <td>
+                    180
+                  </td>
+
+                  <td>
+                    pcs
+                  </td>
+
+                  <td>
+                    <span class="status low">
+                      Low Stock
+                    </span>
+                  </td>
+
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ADMIN CUSTOMERS -->
+
+      <section
+        id="adminCustomers"
+        class="page-section hidden">
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <div>
+
+              <h2>
+                Customers
+              </h2>
+
+              <p>
+                Registered customer accounts.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Gender</th>
+                  <th>Birth Date</th>
+                </tr>
+
+              </thead>
+
+              <tbody id="customersBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ADMIN REPORTS -->
+
+      <section
+        id="adminReports"
+        class="page-section hidden">
+
+        <div class="report-grid">
+
+          <div class="report-card">
+
+            <small>
+              Total Revenue
+            </small>
+
+            <b id="reportRevenue">
+              ₱0
+            </b>
+
+          </div>
+
+
+          <div class="report-card">
+
+            <small>
+              Total Bookings
+            </small>
+
+            <b id="reportBookings">
+              0
+            </b>
+
+          </div>
+
+
+          <div class="report-card">
+
+            <small>
+              Paid Transactions
+            </small>
+
+            <b id="reportPaid">
+              0
+            </b>
+
+          </div>
+
+
+          <div class="report-card">
+
+            <small>
+              Pending Bookings
+            </small>
+
+            <b id="reportPending">
+              0
+            </b>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <h2>
+            Booking Summary
+          </h2>
+
+          <p class="muted">
+            Confirmed and pending bookings are stored
+            in this browser for the demo.
+          </p>
+
+          <div
+            id="reportSummary"
+            class="summary-list">
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ADMIN ACCOUNT CREATION -->
+
+      <section
+        id="adminAdmins"
+        class="page-section hidden">
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <div>
+
+              <h2>
+                Create Admin Account
+              </h2>
+
+              <p>
+                Only authenticated administrators can create
+                another administrator.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <form
+            id="adminCreateForm"
+            novalidate>
+
+            <div class="form-grid two">
+
+
+              <div class="field">
+
+                <label>
+                  Full Name
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="adminName"
+                  required
+                  pattern="[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*"
+                  maxlength="100">
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Username
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="adminUsername"
+                  type="text"
+                  required
+                  pattern="[A-Za-z0-9]+"
+                  autocomplete="username"
+                  placeholder="admin123">
+
+                <small class="hint">
+                  Letters and numbers only.
+                </small>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Email
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="adminEmail"
+                  type="email"
+                  required
+                  maxlength="254">
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Password
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="adminPassword"
+                  type="password"
+                  minlength="8"
+                  pattern="[A-Za-z0-9]+"
+                  required>
+
+                <small class="hint">
+                  8 or more, no maximum, letters/numbers only.
+                </small>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Confirm Password
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="adminConfirmPassword"
+                  type="password"
+                  minlength="8"
+                  pattern="[A-Za-z0-9]+"
+                  required>
+
+                <small class="error"></small>
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="primary-btn"
+              type="submit">
+
+              ＋ Create Admin
+
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <h2>
+              Admin Accounts
+            </h2>
+
+          </div>
+
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                </tr>
+
+              </thead>
+
+              <tbody id="adminsBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <footer>
+        © 2026 CaterRing Catering Management System
+      </footer>
+
+    </main>
+
+  </section>
+
+
+  <!-- =====================================================
+       CUSTOMER PAGE
+  ====================================================== -->
+
+  <section
+    id="customerPage"
+    class="app hidden">
+
+    <aside class="sidebar customer-sidebar">
+
+      <div class="side-brand">
+
+        <div>🍽️</div>
+
+        <span>
+          CaterRing
+          <small>Customer Portal</small>
+        </span>
+
+      </div>
+
+
+      <nav id="customerNav">
+
+        <a
+          class="active"
+          data-section="customerDashboard">
+
+          🏠 Dashboard
+
+        </a>
+
+        <a data-section="customerBooking">
+          📋 New Booking
+        </a>
+
+        <a data-section="customerMyBookings">
+          🗓️ My Bookings
+        </a>
+
+        <a data-section="customerProfile">
+          👤 Profile
+        </a>
+
+      </nav>
+
+
+      <div class="side-bottom">
+
+        <a id="customerLogout">
+          ↪ Log out
+        </a>
+
+      </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+      <header class="topbar">
+
+        <div>
+
+          <p class="eyebrow">
+            CUSTOMER PORTAL
+          </p>
+
+          <h1 id="customerSectionTitle">
+            Dashboard
+          </h1>
+
+        </div>
+
+
+        <div class="user-chip">
+
+          <span>👤</span>
+
+          <div>
+
+            <b id="customerUserName">
+              Customer
+            </b>
+
+            <small id="customerUserEmail">
+              -
+            </small>
+
+          </div>
+
+        </div>
+
+      </header>
+
+
+      <!-- CUSTOMER DASHBOARD -->
+
+      <section
+        id="customerDashboard"
+        class="page-section">
+
+        <div class="stat-grid">
+
+          <div class="stat">
+
+            <span>📋</span>
+
+            <b id="customerStatBookings">
+              0
+            </b>
+
+            <small>
+              My Bookings
+            </small>
+
+          </div>
+
+
+          <div class="stat">
+
+            <span>⏳</span>
+
+            <b id="customerStatPending">
+              0
+            </b>
+
+            <small>
+              Pending
+            </small>
+
+          </div>
+
+
+          <div class="stat">
+
+            <span>✓</span>
+
+            <b id="customerStatConfirmed">
+              0
+            </b>
+
+            <small>
+              Confirmed
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <div>
+
+              <h2>
+                Welcome to CaterRing
+              </h2>
+
+              <p>
+                Request your next catering event.
+              </p>
+
+            </div>
+
+
+            <button
+              class="primary-btn small"
+              data-section-target="customerBooking">
+
+              Create Booking
+
+            </button>
+
+          </div>
+
+
+          <div id="customerRecent"></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- CUSTOMER BOOKING -->
+
+      <section
+        id="customerBooking"
+        class="page-section hidden">
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <div>
+
+              <h2>
+                Booking Request
+              </h2>
+
+              <p>
+                Your request will be saved and visible
+                to the administrator.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <form
+            id="customerBookingForm"
+            novalidate>
+
+            <div class="form-grid three">
+
+
+              <div class="field">
+
+                <label>
+                  Name
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="customerRequestName"
+                  required
+                  pattern="[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*"
+                  maxlength="100">
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Email
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="customerRequestEmail"
+                  type="email"
+                  required
+                  maxlength="254">
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Event Type
+                  <i>*</i>
+                </label>
+
+                <select
+                  id="customerRequestType"
+                  required>
+
+                  <option value="">
+                    Select event
+                  </option>
+
+                  <option>Wedding</option>
+                  <option>Birthday</option>
+                  <option>Corporate Event</option>
+                  <option>Debut</option>
+                  <option>Anniversary</option>
+                  <option>Other</option>
+
+                </select>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Event Date
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="customerRequestDate"
+                  type="date"
+                  required>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Guests
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="customerRequestGuests"
+                  type="number"
+                  min="1"
+                  max="10000"
+                  required>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Menu
+                  <i>*</i>
+                </label>
+
+                <select
+                  id="customerRequestMenu"
+                  required>
+
+                  <option value="">
+                    Select menu
+                  </option>
+
+                  <option>
+                    Premium Package
+                  </option>
+
+                  <option>
+                    Package A
+                  </option>
+
+                  <option>
+                    Package B
+                  </option>
+
+                  <option>
+                    Package C
+                  </option>
+
+                </select>
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Venue
+                  <i>*</i>
+                </label>
+
+                <input
+                  id="customerRequestVenue"
+                  required
+                  maxlength="120">
+
+                <small class="error"></small>
+
+              </div>
+
+
+              <div class="field full">
+
+                <label>
+                  Notes
+                </label>
+
+                <textarea
+                  id="customerRequestNotes"
+                  maxlength="500"
+                  rows="4"></textarea>
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="primary-btn"
+              type="submit">
+
+              Submit Booking Request
+
+            </button>
+
+          </form>
+
+        </div>
+
+      </section>
+
+
+      <!-- CUSTOMER BOOKINGS -->
+
+      <section
+        id="customerMyBookings"
+        class="page-section hidden">
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <div>
+
+              <h2>
+                My Bookings
+              </h2>
+
+              <p>
+                Your submitted booking requests.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>ID</th>
+                  <th>Event</th>
+                  <th>Date</th>
+                  <th>Guests</th>
+                  <th>Venue</th>
+                  <th>Status</th>
+                </tr>
+
+              </thead>
+
+              <tbody id="customerBookingsBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- CUSTOMER PROFILE -->
+
+      <section
+        id="customerProfile"
+        class="page-section hidden">
+
+        <div class="panel profile-card">
+
+          <div class="profile-avatar">
+            👤
+          </div>
+
+          <div>
+
+            <h2 id="profileName">
+              -
+            </h2>
+
+            <p id="profileEmail">
+              -
+            </p>
+
+            <p id="profilePhone">
+              -
+            </p>
+
+            <p id="profileGender">
+              -
+            </p>
+
+            <p id="profileBirthDate">
+              -
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <footer>
+        © 2026 CaterRing Customer Portal
+      </footer>
+
+    </main>
+
+  </section>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
